@@ -1,9 +1,11 @@
 import json
 import os
 from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.lib import colors
+#from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 
 # 数据库文件路径
 db_file = 'wordbook.json'
@@ -21,22 +23,30 @@ def save_database(database):
     with open(db_file, 'w') as f:
         json.dump(database, f, indent=4)
 
-def add_or_update_word(word, definition=None):
+def add_or_update_word(word):
     database = load_database()
     if word in database:
         print(f"单词 '{word}' 已经存在.")
         print("释义:")
         for idx, defn in enumerate(database[word]['definitions'], start=1):
             print(f"{idx}.{defn} ")
-        quote = input("是否将当前释义添加(y/n)?: ")
-        if quote == 'y' and definition:
+        quote = input("是否添加新释义(y/n)?: ")
+        if quote == 'y':
+            definition = input("新释义: ")
             database[word]['definitions'].append(definition)
         # if definition and definition.lower() != 'no':
         #     database[word]['definitions'].append(definition)
         database[word]['count'] += 1
         #print(f"这个词已经被查询了 {database[word]['count']} 次.")
     else:
-        database[word] = {'count': 1, 'definitions': [definition] if definition else []}
+        definition = input("请输入释义: ")  
+        verb_es = input("输出入第三人称单数: ")
+        verb_ing = input("请输入ing形式: ")
+        verb_past = input("请输入过去式: ")
+        verb_participle = input("请输入过去分词: ")
+        database[word] = {'count': 1, 'verb_es': verb_es, 'verb_ing': verb_ing, 
+                          'verb_past': verb_past, 'verb_participle': verb_participle,
+                          'definitions': [definition] if definition else []}
     save_database(database)
 
 def print_database():
@@ -48,69 +58,39 @@ def print_database():
 
 def generate_pdf():
     database = load_database()
-
-    # 注册中文字体
+    # 注册中文字体以支持中文
     pdfmetrics.registerFont(TTFont('Chinese', 'STHeiti Light.ttc'))
-
-    c = canvas.Canvas("wordbook.pdf", pagesize=letter)
-    print(c._pagesize)
-
-    # 设置字体
-    c.setFont("Chinese", 10)
-    
-    title = "所有单词"
-    c.drawString(100, 750, title)
-    y = 700
-    
-    # 设置列的起始位置
-    word_column_start = 100  # 单词列起始位置
-    count_column_start = 400  # 查询次数列起始位置
-    definitions_start = 450  # 释义起始位置
-
+    # 创建PDF文档
+    doc = SimpleDocTemplate("wordbook_with_table.pdf", pagesize=letter)
+    page_width, page_height = letter
+    margin = 30
+    # 准备表格数据
+    table_data = [['单词', '记忆次数', '释义']]
     for word, info in database.items():
-        # 绘制单词和查询次数g
-        c.drawString(word_column_start, y, word)
-        c.drawString(count_column_start, y, str(info['count']))
-        
-        # 绘制释义
-        definitions_text = ', '.join(info['definitions'])
-        c.drawString(definitions_start, y, definitions_text)
-        
-        y -= 20  # 更新y坐标以绘制下一个条目
-        if y < 50:  # 检查是否需要新页
-            c.showPage()
-            c.setFont("Chinese", 10)
-            y = 780
+        # 将释义列表转换成字符串，并加入表格数据中
+        definitions = ', '.join(info['definitions'])
+        table_data.append([word, str(info['count']), definitions])
+    # 创建表格实例
+    table = Table(table_data)
+    # 指定每列的宽度
+    colWidths = [100, 50, 200]  # 例如，第一列100点，第二列50点，第三列200点宽
 
-    c.save()
-    print("PDF已生成: wordbook.pdf")
+    # 指定每行的高度
+    rowHeights = [20] * len(table_data)  # 每行20点高    
+    # 创建表格样式
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.lightblue),
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black),
+        ('FONTNAME', (0, 0), (-1, -1), 'Chinese'),
+        ('ROWHEIGHTS', (0, 0), (-1, -1), rowHeights),
+        ('COLWIDTHS', (0, 0), (-1, -1), colWidths),
+    ]))
+    # 构建PDF文档g
+    doc.build([table])
+    print("PDF文档已生成: wordbook_with_table.pdf")
 
-# def generate_pdf():
-#     database = load_database()
-#     # 注册中文字体
-#     pdfmetrics.registerFont(TTFont('Chinese', 'STHeiti Light.ttc'))
-#     c = canvas.Canvas("wordbook.pdf", pagesize=letter)
-
-#     # 使用注册的中文字体
-#     c.setFont("Chinese", 12)
-#     # 在制定位置输出“所有单词”
-#     c.drawString(100, 750, "所有单词")
-#     y = 730
-#     for word, info in database.items():
-#         # 格式化单词、次数和释义
-#         line_format = "{:<30}{:>3}   " + "   ".join(["{:<15}" for _ in info['definitions']])
-#         line = line_format.format(word, info['count'], *info['definitions'])
-
-#         c.drawString(100, y, line)
-#         y -= 20
-#         if y < 50:  # 如果到达页面底部，则创建新的一页
-#             c.showPage()
-#             y = 780
-#             c.setFont("SimSun", 10)  # 确保在新页面上设置字体
-#     c.save()
-#     print("PDF已生成: wordbook.pdf")
-
-# 请将'YOUR_PATH_TO_TTF_FONT_FILE.ttf'替换为你的中文TTF字体文件的路径
 
 # Example usage
 while True:
@@ -121,9 +101,8 @@ while True:
         generate_pdf()
     elif word.lower() == 'p':
         print_database()
-    else:
-        definition = input("请输入释义: ")
-        add_or_update_word(word, definition)
+    else:      
+        add_or_update_word(word)
     # action = input("输入 '1' 添加或更新一个单词, 'p' 显示当前所有数据, 'g' 生成PDF文件, 'q' 退出: ")
     # if action.lower() == 'q':
     #     break

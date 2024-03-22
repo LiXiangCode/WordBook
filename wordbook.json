@@ -1,32 +1,12 @@
 {
-    "begin": {
+    "lament": {
         "count": 1,
+        "verb_es": "laments",
+        "verb_ing": "lamenting",
+        "verb_past": "lamented",
+        "verb_participle": "lamented",
         "definitions": [
-            "\u5f00\u59cb"
-        ]
-    },
-    "take an interest in": {
-        "count": 1,
-        "definitions": [
-            "\u5bf9..\u611f\u5174\u8da3"
-        ]
-    },
-    "defend": {
-        "count": 1,
-        "definitions": [
-            "\u4fdd\u536b"
-        ]
-    },
-    "set up": {
-        "count": 2,
-        "definitions": [
-            "\u5efa\u7acb"
-        ]
-    },
-    "command": {
-        "count": 2,
-        "definitions": [
-            "\u6307\u6325"
+            "\u5bf9..\u611f\u5230\u75db\u5fc3"
         ]
     }
 }
