@@ -99,39 +99,35 @@ def generate_random_recite_words(num):
     words = list(database.keys())
     random.shuffle(words)
     selected_words = words[:min(num, len(words))]
-    word_data = {word: database[word] for word in selected_words}    
+    word_data = {word: database[word] for word in selected_words}  
+    for word in selected_words:
+        database[word]['count'] += 1  
     
     # 注册中文字体以支持中文
     pdfmetrics.registerFont(TTFont('Chinese', 'STHeiti Light.ttc'))
     # 创建PDF文档
     doc = SimpleDocTemplate("recitebook_with_table.pdf", pagesize=letter)
-
-    story = []  # 创建一个空的故事列表，用于存放文档内容
-    # 获取当前日期并格式化
-    current_date = datetime.datetime.now().strftime("%Y-%m-%d")
-    # 设置样式并创建日期段落
-    styles = getSampleStyleSheet()
-    styles.add(ParagraphStyle(name='Center', alignment=CENTER, fontName='Chinese'))
-    date_para = Paragraph(current_date, styles['Center'])
-    # 将日期段落和一个小的垂直间隔添加到故事中
-    story.append(date_para)
-    story.append(Spacer(1, 12))  # 添加12点的间隔    
-    
     # 准备表格数据
     table_data = [['单词', '记忆量', '释义1', '释义2', '释义3', '释义4', '释义5']]    
     # 添加数据行
-    for word, info in word_data.items():
-        row = [word, str(info['count'])] + info['definitions'][:5]  # 保证最多只取五个释义
-        row += [''] * (7 - len(row))  # 确保每行都有7个元素
-        table_data.append(row)    
-
     styles = [
         ('BACKGROUND', (0, 0), (-1, 0), colors.lightblue), # 首行的单元格背景颜色
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke), # 首行的文字颜色
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'), # 所有单元格的对齐方式
         ('GRID', (0, 0), (-1, -1), 1, colors.black), # 所有单元格的网格线：黑色，宽度为1
         ('FONTNAME', (0, 0), (-1, -1), 'Chinese'), # 使用上面注册的名为Chinese的字体
-    ]
+    ]    
+    word_counts = 0
+    for word, info in word_data.items():
+        word_counts += 1
+        row = [word, str(info['count'])]# + info['definitions'][:5]  # 保证最多只取五个释义
+        for i, meaning in enumerate(info['definitions'][:5]):
+            row += ['']
+            styles.append(('BACKGROUND', (2, word_counts), (2+i, word_counts), colors.lightgrey))
+        row += [''] * (7 - len(row))  # 确保每行都有7个元素
+        table_data.append(row)    
+
+
     # 创建表格实例
     table = Table(table_data)
 
@@ -144,10 +140,10 @@ def generate_random_recite_words(num):
     
     table.setStyle(TableStyle(styles))
 
-    story.append(table)
     # 构建PDF文档
-    doc.build(story)
-
+    doc.build([table])
+    
+    save_database(database)
     print("PDF文档已生成: recitebook_with_table.pdf")      
 
 # Example usage
