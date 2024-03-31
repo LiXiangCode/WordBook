@@ -1,11 +1,17 @@
+import datetime
 import json
 import os
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
+import random
+from tkinter import CENTER
 from reportlab.lib import colors
-#from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase import pdfmetrics
+from reportlab.lib.styles import ParagraphStyle
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Spacer, Paragraph
+from reportlab.lib.styles import getSampleStyleSheet
+
+
 
 # 数据库文件路径
 db_file = 'wordbook.json'
@@ -29,88 +35,125 @@ def add_or_update_word(word):
         print(f"单词 '{word}' 已经存在.")
         print("释义:")
         for idx, defn in enumerate(database[word]['definitions'], start=1):
-            print(f"{idx}.{defn} ")
-        quote = input("是否添加新释义(y/n)?: ")
-        if quote == 'y':
-            definition = input("新释义: ")
+            print(f"{idx}. {defn}")
+        definition = input("请输入新释义,no表示不添加: ")
+        if definition and definition.lower() != 'no':
             database[word]['definitions'].append(definition)
-        # if definition and definition.lower() != 'no':
-        #     database[word]['definitions'].append(definition)
-        database[word]['count'] += 1
-        #print(f"这个词已经被查询了 {database[word]['count']} 次.")
     else:
-        definition = input("请输入释义: ")  
-        verb_es = input("输出入第三人称单数: ")
-        verb_ing = input("请输入ing形式: ")
-        verb_past = input("请输入过去式: ")
-        verb_participle = input("请输入过去分词: ")
-        database[word] = {'count': 1, 'verb_es': verb_es, 'verb_ing': verb_ing, 
-                          'verb_past': verb_past, 'verb_participle': verb_participle,
-                          'definitions': [definition] if definition else []}
+        definition = input("请输入释义: ")
+        database[word] = {'count': 1, 'definitions': [definition] if definition else []}
     save_database(database)
 
 def print_database():
     database = load_database()
-    print("所有单词:")
-    for word, info in database.items():
-        print(f"{word}: {info['count']} 次, 释义: {', '.join(info['definitions'])}")
-
+    # print("所有单词:")
+    # for word, info in database.items():
+    #     print(f"{word}: {info['count']} 次, 释义: {', '.join(info['definitions'])}")
+    #     for definition in info['definitions']:
+    #         print(f"")
 
 def generate_pdf():
+    # 加载JSON文件
     database = load_database()
     # 注册中文字体以支持中文
     pdfmetrics.registerFont(TTFont('Chinese', 'STHeiti Light.ttc'))
     # 创建PDF文档
     doc = SimpleDocTemplate("wordbook_with_table.pdf", pagesize=letter)
-    page_width, page_height = letter
-    margin = 30
     # 准备表格数据
-    table_data = [['单词', '记忆次数', '释义']]
+    table_data = [['单词', '记忆量', '释义1', '释义2', '释义3', '释义4', '释义5']]    
+    # 添加数据行
     for word, info in database.items():
-        # 将释义列表转换成字符串，并加入表格数据中
-        definitions = ', '.join(info['definitions'])
-        table_data.append([word, str(info['count']), definitions])
+        row = [word, str(info['count'])] + info['definitions'][:5]  # 保证最多只取五个释义
+        row += [''] * (7 - len(row))  # 确保每行都有7个元素
+        table_data.append(row)    
+
+    styles = [
+        ('BACKGROUND', (0, 0), (-1, 0), colors.lightblue), # 首行的单元格背景颜色
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke), # 首行的文字颜色
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'), # 所有单元格的对齐方式
+        ('GRID', (0, 0), (-1, -1), 1, colors.black), # 所有单元格的网格线：黑色，宽度为1
+        ('FONTNAME', (0, 0), (-1, -1), 'Chinese'), # 使用上面注册的名为Chinese的字体
+    ]
     # 创建表格实例
     table = Table(table_data)
+
     # 指定每列的宽度
-    colWidths = [100, 50, 200]  # 例如，第一列100点，第二列50点，第三列200点宽
+    colWidths = [100, 50, 100, 100, 100, 100, 100]  # 根据需要调整  
+    # 为所有行设置统一的高度
+    rowHeights = [20] * len(table_data)  # 假设每行20点高
+    styles.append(('ROWHEIGHTS', (0, 0), (-1, -1), rowHeights)) # 设置每行的高度
+    styles.append(('COLWIDTHS', (0, 0), (-1, -1), colWidths)) # 设置每列的宽度))
+    
+    table.setStyle(TableStyle(styles))
 
-    # 指定每行的高度
-    rowHeights = [20] * len(table_data)  # 每行20点高    
-    # 创建表格样式
-    table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.lightblue),
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-        ('GRID', (0, 0), (-1, -1), 1, colors.black),
-        ('FONTNAME', (0, 0), (-1, -1), 'Chinese'),
-        ('ROWHEIGHTS', (0, 0), (-1, -1), rowHeights),
-        ('COLWIDTHS', (0, 0), (-1, -1), colWidths),
-    ]))
-    # 构建PDF文档g
+    # 构建PDF文档
     doc.build([table])
-    print("PDF文档已生成: wordbook_with_table.pdf")
 
+    print("PDF文档已生成: wordbook_with_table.pdf")    
+    
+def generate_random_recite_words(num):
+    # 加载JSON文件
+    database = load_database()
+    
+    # 从数据库中随机选择指定数量的单词
+    words = list(database.keys())
+    random.shuffle(words)
+    selected_words = words[:min(num, len(words))]
+    word_data = {word: database[word] for word in selected_words}  
+    for word in selected_words:
+        database[word]['count'] += 1  
+    
+    # 注册中文字体以支持中文
+    pdfmetrics.registerFont(TTFont('Chinese', 'STHeiti Light.ttc'))
+    # 创建PDF文档
+    doc = SimpleDocTemplate("recitebook_with_table.pdf", pagesize=letter)
+    # 准备表格数据
+    table_data = [['单词', '记忆量', '释义1', '释义2', '释义3', '释义4', '释义5']]    
+    # 添加数据行
+    styles = [
+        ('BACKGROUND', (0, 0), (-1, 0), colors.lightblue), # 首行的单元格背景颜色
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke), # 首行的文字颜色
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'), # 所有单元格的对齐方式
+        ('GRID', (0, 0), (-1, -1), 1, colors.black), # 所有单元格的网格线：黑色，宽度为1
+        ('FONTNAME', (0, 0), (-1, -1), 'Chinese'), # 使用上面注册的名为Chinese的字体
+    ]    
+    word_counts = 0
+    for word, info in word_data.items():
+        word_counts += 1
+        row = [word, str(info['count'])]# + info['definitions'][:5]  # 保证最多只取五个释义
+        for i, meaning in enumerate(info['definitions'][:5]):
+            row += ['']
+            styles.append(('BACKGROUND', (2, word_counts), (2+i, word_counts), colors.lightgrey))
+        row += [''] * (7 - len(row))  # 确保每行都有7个元素
+        table_data.append(row)    
+
+
+    # 创建表格实例
+    table = Table(table_data)
+
+    # 指定每列的宽度
+    colWidths = [100, 50, 100, 100, 100, 100, 100]  # 根据需要调整  
+    # 为所有行设置统一的高度
+    rowHeights = [20] * len(table_data)  # 假设每行20点高
+    styles.append(('ROWHEIGHTS', (0, 0), (-1, -1), rowHeights)) # 设置每行的高度
+    styles.append(('COLWIDTHS', (0, 0), (-1, -1), colWidths)) # 设置每列的宽度))
+    
+    table.setStyle(TableStyle(styles))
+
+    # 构建PDF文档
+    doc.build([table])
+    
+    save_database(database)
+    print("PDF文档已生成: recitebook_with_table.pdf")      
 
 # Example usage
 while True:
-    word = input("输入一个单词: ")
+    word = input("请输入一个单词: ");
     if word.lower() == 'q':
         break
     elif word.lower() == 'g':
         generate_pdf()
-    elif word.lower() == 'p':
-        print_database()
-    else:      
+    elif word.lower() == 'r':
+        generate_random_recite_words(50)
+    else:
         add_or_update_word(word)
-    # action = input("输入 '1' 添加或更新一个单词, 'p' 显示当前所有数据, 'g' 生成PDF文件, 'q' 退出: ")
-    # if action.lower() == 'q':
-    #     break
-    # elif action.lower() == '1':
-    #     word = input("输入一个单词: ")
-    #     definition = input("输入释义 (输入'no'表示当前释义已存在，无需再输入): ")
-    #     add_or_update_word(word, definition)
-    # elif action.lower() == 'p':
-    #     print_database()
-    # elif action.lower() == 'g':
-    #     generate_pdf()
