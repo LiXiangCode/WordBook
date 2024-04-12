@@ -148,7 +148,7 @@ def generate_random_recite_words(num):
 
 # Example usage
 while True:
-    word = input("请输入一个单词: ");
+    word = input("请输入一个单词: ")
     if word.lower() == 'q':
         break
     elif word.lower() == 'g':
