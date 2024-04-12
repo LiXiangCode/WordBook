@@ -1,42 +1,42 @@
 {
     "lament": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u5bf9..\u611f\u5230\u60b2\u75db"
         ]
     },
     "haunt": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "(\u9b3c\u9b42)\u8426\u7ed5"
         ]
     },
     "elect": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u9009\u4e3e"
         ]
     },
     "emulate": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u6548\u4eff"
         ]
     },
     "wish": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u5e0c\u671b"
         ]
     },
     "found": {
-        "count": 2,
+        "count": 3,
         "definitions": [
             "\u521b\u529e"
         ]
     },
     "join": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u53c2\u52a0",
             "\u8fde\u63a5"
@@ -49,31 +49,31 @@
         ]
     },
     "write": {
-        "count": 2,
+        "count": 4,
         "definitions": [
             "\u4e66\u5199"
         ]
     },
     "beg": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u4e5e\u6c42"
         ]
     },
     "go on": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u8fdb\u884c"
         ]
     },
     "befriend": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u548c..\u4ea4\u670b\u53cb"
         ]
     },
     "cleanse": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u6e05\u6d17"
         ]
@@ -85,14 +85,14 @@
         ]
     },
     "move": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u79fb\u52a8",
             "\u642c"
         ]
     },
     "force": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u5f3a\u8feb"
         ]
@@ -105,19 +105,20 @@
         ]
     },
     "compromise": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u59a5\u534f"
         ]
     },
     "proclaim": {
-        "count": 3,
+        "count": 4,
         "definitions": [
-            "\u516c\u5f00\u58f0\u660e"
+            "\u516c\u5f00\u58f0\u660e",
+            "\u58f0\u79f0"
         ]
     },
     "avoid": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u907f\u514d"
         ]
@@ -129,14 +130,14 @@
         ]
     },
     "remain": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u5269\u4f59",
             "\u4ecd\u7136"
         ]
     },
     "cut off": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u5207\u65ad"
         ]
@@ -144,36 +145,37 @@
     "advocate": {
         "count": 3,
         "definitions": [
-            "\u62e5\u62a4"
+            "\u62e5\u62a4",
+            "\u5021\u5bfc"
         ]
     },
     "suppress": {
-        "count": 2,
+        "count": 3,
         "definitions": [
             "\u9547\u538b"
         ]
     },
     "inspire": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u6fc0\u52b1"
         ]
     },
     "argue": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u4e3b\u5f20",
             "\u4e89\u8bba"
         ]
     },
     "develop": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u53d1\u5c55"
         ]
     },
     "read": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u9605\u8bfb"
         ]
@@ -185,44 +187,44 @@
         ]
     },
     "move away": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u79bb\u5f00"
         ]
     },
     "arrange": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u5b89\u6392"
         ]
     },
     "recognise": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u8ba4\u53ef",
             "\u627f\u8ba4"
         ]
     },
     "refuse": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u62d2\u7edd"
         ]
     },
     "temper": {
-        "count": 2,
+        "count": 4,
         "definitions": [
             "\u7f13\u548c"
         ]
     },
     "try to": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u5c1d\u8bd5"
         ]
     },
     "adopt": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u91c7\u7eb3",
             "\u6536\u517b"
@@ -235,7 +237,7 @@
         ]
     },
     "grow up": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u957f\u5927"
         ]
@@ -247,13 +249,13 @@
         ]
     },
     "describe": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u63cf\u8ff0"
         ]
     },
     "range from": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u8303\u56f4\u4ece..\u5230.."
         ]
@@ -265,73 +267,609 @@
         ]
     },
     "involve": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u6d89\u53ca",
             "\u5377\u5165"
         ]
     },
     "lead to": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u5bfc\u81f4"
         ]
     },
     "transform": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u8f6c\u53d8"
         ]
     },
     "aim": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u65e8\u5728",
             "\u7784\u51c6"
         ]
     },
     "persecute": {
-        "count": 2,
+        "count": 3,
         "definitions": [
             "\u8feb\u5bb3"
         ]
     },
     "result in": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u5bfc\u81f4"
         ]
     },
     "solidify": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u4f7f..\u53d8\u7a33\u56fa"
         ]
     },
     "influence": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u5f71\u54cd"
         ]
     },
     "launch": {
-        "count": 3,
+        "count": 5,
         "definitions": [
             "\u53d1\u8d77",
             "\u53d1\u52a8"
         ]
     },
     "support": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u652f\u6301",
             "\u62e5\u62a4"
         ]
     },
     "retain": {
-        "count": 3,
+        "count": 4,
         "definitions": [
             "\u4fdd\u7559"
+        ]
+    },
+    "maraud": {
+        "count": 1,
+        "definitions": [
+            "\u63a0\u593a"
+        ]
+    },
+    "undertake": {
+        "count": 3,
+        "definitions": [
+            "\u627f\u62c5"
+        ]
+    },
+    "form": {
+        "count": 2,
+        "definitions": [
+            "\u5efa\u7acb"
+        ]
+    },
+    "debate": {
+        "count": 2,
+        "definitions": [
+            "\u8ba8\u8bba"
+        ]
+    },
+    "secure": {
+        "count": 3,
+        "definitions": [
+            "\u4e89\u53d6\u5230"
+        ]
+    },
+    "offer": {
+        "count": 3,
+        "definitions": [
+            "\u63d0\u4f9b"
+        ]
+    },
+    "snub": {
+        "count": 2,
+        "definitions": [
+            "\u51b7\u843d"
+        ]
+    },
+    "outrage": {
+        "count": 2,
+        "definitions": [
+            "\u4f7f\u76db\u6012"
+        ]
+    },
+    "allow": {
+        "count": 3,
+        "definitions": [
+            "\u5141\u8bb8"
+        ]
+    },
+    "receive": {
+        "count": 2,
+        "definitions": [
+            "\u63a5\u6536"
+        ]
+    },
+    "surrender": {
+        "count": 2,
+        "definitions": [
+            "\u4ea4\u51fa",
+            "\u6295\u964d"
+        ]
+    },
+    "ignite": {
+        "count": 1,
+        "definitions": [
+            "\u70b9\u71c3"
+        ]
+    },
+    "fuel": {
+        "count": 3,
+        "definitions": [
+            "\u52a0\u5267"
+        ]
+    },
+    "blame on": {
+        "count": 1,
+        "definitions": [
+            "\u5f52\u548e\u4e8e"
+        ]
+    },
+    "strengthen": {
+        "count": 2,
+        "definitions": [
+            "\u52a0\u5f3a"
+        ]
+    },
+    "wage": {
+        "count": 1,
+        "definitions": [
+            "\u8fdb\u884c"
+        ]
+    },
+    "publish": {
+        "count": 3,
+        "definitions": [
+            "\u51fa\u7248"
+        ]
+    },
+    "assume": {
+        "count": 2,
+        "definitions": [
+            "\u63a5\u4efb"
+        ]
+    },
+    "call for": {
+        "count": 2,
+        "definitions": [
+            "\u547c\u5401"
+        ]
+    },
+    "organise": {
+        "count": 2,
+        "definitions": [
+            "\u7ec4\u7ec7"
+        ]
+    },
+    "threaten": {
+        "count": 3,
+        "definitions": [
+            "\u5a01\u80c1"
+        ]
+    },
+    "achieve": {
+        "count": 2,
+        "definitions": [
+            "\u83b7\u5f97"
+        ]
+    },
+    "set about": {
+        "count": 2,
+        "definitions": [
+            "\u7740\u624b"
+        ]
+    },
+    "solicit": {
+        "count": 2,
+        "definitions": [
+            "\u5bfb\u6c42"
+        ]
+    },
+    "overthrow": {
+        "count": 1,
+        "definitions": [
+            "\u63a8\u7ffb"
+        ]
+    },
+    "come under": {
+        "count": 1,
+        "definitions": [
+            "\u53d7\u5230"
+        ]
+    },
+    "station": {
+        "count": 2,
+        "definitions": [
+            "\u9a7b\u624e"
+        ]
+    },
+    "hold": {
+        "count": 2,
+        "definitions": [
+            "\u62ff\u4f4f",
+            "\u4e3e\u529e"
+        ]
+    },
+    "establish": {
+        "count": 1,
+        "definitions": [
+            "\u5efa\u7acb"
+        ]
+    },
+    "attend": {
+        "count": 1,
+        "definitions": [
+            "\u51fa\u5e2d"
+        ]
+    },
+    "ignore": {
+        "count": 2,
+        "definitions": [
+            "\u5ffd\u89c6"
+        ]
+    },
+    "stick to": {
+        "count": 2,
+        "definitions": [
+            "\u575a\u6301"
+        ]
+    },
+    "lead": {
+        "count": 1,
+        "definitions": [
+            "\u9886\u5bfc"
+        ]
+    },
+    "house": {
+        "count": 2,
+        "definitions": [
+            "\u4e3a..\u63d0\u4f9b\u4f4f\u6240"
+        ]
+    },
+    "resist": {
+        "count": 1,
+        "definitions": [
+            "\u62b5\u6297"
+        ]
+    },
+    "mobilize": {
+        "count": 1,
+        "definitions": [
+            "\u52a8\u5458"
+        ]
+    },
+    "engage": {
+        "count": 1,
+        "definitions": [
+            "\u5438\u5f15"
+        ]
+    },
+    "combine": {
+        "count": 2,
+        "definitions": [
+            "\u7ed3\u5408"
+        ]
+    },
+    "lambast": {
+        "count": 2,
+        "definitions": [
+            "\u731b\u70c8\u62a8\u51fb"
+        ]
+    },
+    "decentralize": {
+        "count": 2,
+        "definitions": [
+            "\u4e0b\u653e\u6743\u529b"
+        ]
+    },
+    "put forward": {
+        "count": 1,
+        "definitions": [
+            "\u63d0\u51fa"
+        ]
+    },
+    "earn": {
+        "count": 2,
+        "definitions": [
+            "\u8d62\u5f97"
+        ]
+    },
+    "recuperate": {
+        "count": 1,
+        "definitions": [
+            "\u6062\u590d"
+        ]
+    },
+    "seize": {
+        "count": 1,
+        "definitions": [
+            "\u593a\u53d6"
+        ]
+    },
+    "succeed": {
+        "count": 1,
+        "definitions": [
+            "\u63a5\u4efb"
+        ]
+    },
+    "marginalize": {
+        "count": 1,
+        "definitions": [
+            "\u6392\u65a5"
+        ]
+    },
+    "move to": {
+        "count": 1,
+        "definitions": [
+            "\u91c7\u53d6\u63aa\u65bd"
+        ]
+    },
+    "embark on": {
+        "count": 1,
+        "definitions": [
+            "\u5f00\u59cb"
+        ]
+    },
+    "regard": {
+        "count": 1,
+        "definitions": [
+            "\u4e0e..\u6709\u5173"
+        ]
+    },
+    "suffice": {
+        "count": 1,
+        "definitions": [
+            "\u8db3\u591f"
+        ]
+    },
+    "defend": {
+        "count": 2,
+        "definitions": [
+            "\u4e3a..\u8fa9\u89e3"
+        ]
+    },
+    "put together": {
+        "count": 2,
+        "definitions": [
+            "\u62df\u5b9a"
+        ]
+    },
+    "number": {
+        "count": 1,
+        "definitions": [
+            "\u603b\u8ba1"
+        ]
+    },
+    "turn": {
+        "count": 1,
+        "definitions": [
+            "\u8f6c\u5411"
+        ]
+    },
+    "await": {
+        "count": 1,
+        "definitions": [
+            "\u7b49\u5f85"
+        ]
+    },
+    "loose": {
+        "count": 1,
+        "definitions": [
+            "\u53d1\u52a8"
+        ]
+    },
+    "massacre": {
+        "count": 1,
+        "definitions": [
+            "\u5c60\u6740"
+        ]
+    },
+    "stake hope on": {
+        "count": 1,
+        "definitions": [
+            "\u5bc4\u5e0c\u671b\u4e8e"
+        ]
+    },
+    "render": {
+        "count": 1,
+        "definitions": [
+            "\u53d8\u5f97"
+        ]
+    },
+    "expel": {
+        "count": 1,
+        "definitions": [
+            "\u9a71\u9010"
+        ]
+    },
+    "hide": {
+        "count": 1,
+        "definitions": [
+            "\u9690\u85cf"
+        ]
+    },
+    "regard..as..": {
+        "count": 1,
+        "definitions": [
+            "\u5c06..\u89c6\u4e3a.."
+        ]
+    },
+    "ridicule": {
+        "count": 1,
+        "definitions": [
+            "\u595a\u843d"
+        ]
+    },
+    "champion": {
+        "count": 1,
+        "definitions": [
+            "\u634d\u536b"
+        ]
+    },
+    "boost": {
+        "count": 1,
+        "definitions": [
+            "\u589e\u52a0"
+        ]
+    },
+    "incorporate": {
+        "count": 1,
+        "definitions": [
+            "\u5408\u5e76"
+        ]
+    },
+    "lay down": {
+        "count": 1,
+        "definitions": [
+            "\u5236\u5b9a"
+        ]
+    },
+    "turn over": {
+        "count": 1,
+        "definitions": [
+            "\u4ea4\u7ed9"
+        ]
+    },
+    "confiscate": {
+        "count": 1,
+        "definitions": [
+            "\u6ca1\u6536"
+        ]
+    },
+    "mould": {
+        "count": 1,
+        "definitions": [
+            "\u5851\u9020"
+        ]
+    },
+    "fend..off": {
+        "count": 1,
+        "definitions": [
+            "\u62b5\u6321"
+        ]
+    },
+    "reunite": {
+        "count": 1,
+        "definitions": [
+            "\u91cd\u805a"
+        ]
+    },
+    "retake": {
+        "count": 1,
+        "definitions": [
+            "\u593a\u56de"
+        ]
+    },
+    "thieve ": {
+        "count": 1,
+        "definitions": [
+            "\u5077\u7a83"
+        ]
+    },
+    "worry": {
+        "count": 1,
+        "definitions": [
+            "\u8ba9..\u611f\u5230\u62c5\u5fe7"
+        ]
+    },
+    "share": {
+        "count": 1,
+        "definitions": [
+            "\u5171\u4eab"
+        ]
+    },
+    "suffer": {
+        "count": 1,
+        "definitions": [
+            "\u906d\u53d7"
+        ]
+    },
+    "capture": {
+        "count": 1,
+        "definitions": [
+            "\u6293\u6355"
+        ]
+    },
+    "behead": {
+        "count": 1,
+        "definitions": [
+            "\u65a9\u9996"
+        ]
+    },
+    "torture": {
+        "count": 1,
+        "definitions": [
+            "\u6298\u78e8"
+        ]
+    },
+    "execute": {
+        "count": 1,
+        "definitions": [
+            "\u5904\u51b3"
+        ]
+    },
+    "respond": {
+        "count": 1,
+        "definitions": [
+            "\u4f5c\u51fa\u56de\u5e94"
+        ]
+    },
+    "follow": {
+        "count": 1,
+        "definitions": [
+            "\u9075\u5faa"
+        ]
+    },
+    "expand": {
+        "count": 1,
+        "definitions": [
+            "\u6269\u5f20"
+        ]
+    },
+    "encompass": {
+        "count": 1,
+        "definitions": [
+            "\u5305\u62ec"
+        ]
+    },
+    "view..as..": {
+        "count": 1,
+        "definitions": [
+            "\u628a..\u89c6\u4e3a.."
+        ]
+    },
+    "initiate": {
+        "count": 1,
+        "definitions": [
+            "\u53d1\u8d77"
+        ]
+    },
+    "accompany": {
+        "count": 1,
+        "definitions": [
+            "\u4f34\u968f"
+        ]
+    },
+    "prove": {
+        "count": 1,
+        "definitions": [
+            "\u8bc1\u660e"
         ]
     }
 }
